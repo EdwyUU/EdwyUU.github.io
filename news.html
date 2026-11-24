@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>News | Edward Azakov</title>
+<meta name="description" content="A timeline of Edward Azakov's news, from starting at Texas A&amp;M in 2022 to today.">
+<meta name="theme-color" content="#2b0203">
+<link rel="preload" as="image" href="news-zachry.svg">
+<style>
+/* News timeline: newest at the top. A fixed line drawing sits behind the page and
+   cross-fades as each era of the timeline reaches the middle of the screen. */
+:root { --base: #2b0203; --ink: #f7ece7; --soft: #e2bcb6; --neon: #ff7a78; --line: rgba(255,122,120,.55); }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--base); color: var(--ink);
+  font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif; font-size: 1.0625rem; line-height: 1.5; }
+a { color: var(--ink); }
+a:focus-visible { outline: 2px solid var(--neon); outline-offset: 3px; }
+
+.bg, .bg div { position: fixed; inset: 0; }
+.bg { z-index: 0; }
+.bg div { background-size: cover; background-repeat: no-repeat; opacity: 0; transition: opacity .8s ease; will-change: opacity; }
+.bg div.on { opacity: 1; }
+.bg .zachry { background-image: url(news-zachry.svg); background-position: 60% 45%; }
+.bg .japan { background-image: url(news-japan.svg); background-position: 50% 56%; }
+/* each drawing carries its own shade over the left side, where the text sits, tinted to match it */
+.bg div::after { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgb(var(--shade) / .94) 0, rgb(var(--shade) / .86) 26rem, rgb(var(--shade) / .35) 46rem, rgb(var(--shade) / 0) 62rem); }
+.bg .zachry { --shade: 34 1 2; }
+.bg .japan { --shade: 22 4 40; }
+
+.wrap { position: relative; z-index: 2; }
+.top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .25rem 1.25rem;
+  max-width: 72rem; margin: 0 auto; padding: 1rem 1.25rem; }
+.top .home { font-weight: 700; text-decoration: none; }
+.top nav { display: flex; gap: 1.1rem; flex-wrap: wrap; font-size: .95rem; }
+.top nav a { color: var(--soft); text-decoration: none; }
+.top nav a:hover, .top nav a[aria-current] { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
+main { max-width: 72rem; margin: 0 auto; padding: 0 1.25rem; }
+.col { max-width: 31rem; position: relative; }
+h1 { font-size: 2.4rem; font-weight: 400; line-height: 1.1; margin: 1.5rem 0 .4rem; }
+.intro { color: var(--soft); margin: 0 0 .5rem; }
+.key { font-size: .9rem; color: var(--soft); display: flex; align-items: center; gap: .45rem; margin: 0; }
+.key i { width: .62rem; height: .62rem; border-radius: 50%; background: var(--neon); box-shadow: 0 0 8px var(--neon); display: inline-block; }
+
+/* the rail */
+.tl { position: relative; padding-left: 1.9rem; }
+.tl::before { content: ""; position: absolute; left: .5rem; top: 2rem; bottom: 3rem; width: 2px; background: var(--line); box-shadow: 0 0 10px rgba(255,90,90,.6); }
+.era { min-height: 88vh; display: flex; flex-direction: column; justify-content: center; padding: 2rem 0; }
+.era:first-child { min-height: 78vh; justify-content: flex-start; padding-top: 1.5rem; }
+.era.tall { min-height: 115vh; }
+.era ol { list-style: none; margin: 0; padding: 0; }
+.year { margin: 1.6rem 0 .5rem -1.9rem; }
+.year:first-child { margin-top: 0; }
+.year span { display: inline-block; font-weight: 700; font-size: .9rem; line-height: 1; padding: .34rem .7rem; border-radius: 999px;
+  color: var(--ink); background: var(--base); border: 1.5px solid var(--neon); box-shadow: 0 0 10px rgba(255,90,90,.55); font-variant-numeric: tabular-nums; }
+.ev { position: relative; display: grid; grid-template-columns: 4.7rem 1fr; gap: .7rem; padding: .7rem 0; }
+.ev::before { content: ""; position: absolute; left: -1.74rem; top: 1.12rem; width: .7rem; height: .7rem; border-radius: 50%;
+  background: var(--base); border: 2px solid var(--neon); box-sizing: border-box; }
+.ev.award::before { background: var(--neon); box-shadow: 0 0 9px var(--neon); }
+.when { color: var(--soft); font-variant-numeric: tabular-nums; }
+.what { text-shadow: 0 1px 6px rgba(20,0,0,.9); }
+.ev.big .what { font-size: 1.3rem; line-height: 1.35; }
+/* the Japan stretch of the timeline picks up the purple of its drawing */
+.era[data-bg="japan"] { position: relative; --neon: #b48cf0; }
+.era[data-bg="japan"]::before { content: ""; position: absolute; left: -1.4rem; top: 0; bottom: 0; width: 2px;
+  background: linear-gradient(#ff7a78, #b48cf0 18%, #b48cf0 82%, #ff7a78); box-shadow: 0 0 10px rgba(150,90,255,.7); }
+.era[data-bg="japan"] .ev::before { background: #25083a; }
+.era[data-bg="japan"] .when { color: #d9c8f5; }
+.ev.big .when { padding-top: .25rem; }
+
+footer { max-width: 72rem; margin: 0 auto; padding: 1rem 1.25rem 2rem; font-size: .88rem; color: var(--soft); }
+
+@media (max-width: 52rem) {
+  .bg div::after { background: rgb(var(--shade) / .7); }
+  .col { max-width: none; }
+}
+@media (max-width: 34rem) {
+  h1 { font-size: 2rem; }
+  .ev { grid-template-columns: 1fr; gap: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .bg div { transition: none; } }
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><div class="zachry on"></div><div class="japan"></div></div>
+
+<div class="wrap">
+<header class="top">
+  <a class="home" href="index.html">Edward Azakov</a>
+  <nav aria-label="Main">
+    <a href="news.html" aria-current="page">News</a>
+    <a href="index.html#publications">Publications</a>
+    <a href="research-outputs.html">Research Outputs</a>
+    <a href="Azakov_Edward_CV.pdf">CV/Resume</a>
+  </nav>
+</header>
+
+<main>
+<div class="col">
+  <h1>News</h1>
+  <p class="intro">Newest first. Scroll down to go back to where it started in 2022.</p>
+  <p class="key"><i aria-hidden="true"></i>Awards and fellowships</p>
+
+  <div class="tl">
+  <section class="era" data-bg="zachry">
+    <ol>
+      <li class="year"><span>2026</span></li>
+      <li class="ev"><span class="when">Nov</span><span class="what">Submitted our paper on LLM-guided formal verification for RISC-V to IEEE S&amp;P 2027.</span></li>
+      <li class="ev"><span class="when">Aug</span><span class="what">Teaching assistant for ECEN 426: Security of Embedded Systems.</span></li>
+      <li class="ev"><span class="when">Aug</span><span class="what">Started my Ph.D. in Computer Engineering at Texas A&amp;M.</span></li>
+      <li class="ev award"><span class="when">Aug</span><span class="what">Awarded the SCALE Graduate Fellowship (U.S. Navy / Department of War).</span></li>
+      <li class="ev"><span class="when">Jul</span><span class="what">Judge and bug author for Hack@DAC at the Design Automation Conference.</span></li>
+      <li class="ev award"><span class="when">May</span><span class="what">Awarded the Texas Leadership Research Scholars (TLRS) Scholarship.</span></li>
+      <li class="ev"><span class="when">May</span><span class="what">Joined the SETH Lab (Secure and Trustworthy Hardware) at Texas A&amp;M.</span></li>
+      <li class="ev"><span class="when">May</span><span class="what">Graduated from Texas A&amp;M with a B.S. in Electrical Engineering.</span></li>
+      <li class="ev award"><span class="when">Apr</span><span class="what">Awarded the Silicon Valley Community Foundation Innovators Scholarship.</span></li>
+      <li class="ev"><span class="when">Feb</span><span class="what">Joined the Center for Secure Microelectronics Ecosystem (CSME).</span></li>
+      <li class="year"><span>2025</span></li>
+      <li class="ev"><span class="when">Aug</span><span class="what">Joined the CAMSIN Research Group at Texas A&amp;M.</span></li>
+    </ol>
+  </section>
+  <section class="era tall" data-bg="japan">
+    <ol>
+      <li class="ev big"><span class="when">May&ndash;Jun</span><span class="what">Studied abroad in Japan, taking ECEN 350 (Computer Architecture) and ECEN 469 (Advanced Computer Architecture).</span></li>
+    </ol>
+  </section>
+  <section class="era" data-bg="zachry">
+    <ol>
+      <li class="ev"><span class="when">Jan</span><span class="what">Accepted to the Texas A&amp;M engineering study abroad program in Japan.</span></li>
+      <li class="year"><span>2023</span></li>
+      <li class="ev"><span class="when">Aug</span><span class="what">Entered the Electrical Engineering major through Entry to a Major (ETAM).</span></li>
+      <li class="year"><span>2022</span></li>
+      <li class="ev"><span class="when">Aug</span><span class="what">Started my bachelor's in engineering at Texas A&amp;M.</span></li>
+    </ol>
+  </section>
+  </div>
+</div>
+</main>
+
+<footer>Last updated November 2026</footer>
+</div>
+
+<script>
+// Show the drawing that belongs to whichever era is crossing the middle of the screen.
+(function () {
+  var layers = document.querySelectorAll('.bg div');
+  function show(name) {
+    layers.forEach(function (l) { l.classList.toggle('on', l.classList.contains(name)); });
+  }
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) show(e.target.dataset.bg); });
+  }, { rootMargin: '-50% 0px -50% 0px' });
+  document.querySelectorAll('.era').forEach(function (s) { io.observe(s); });
+})();
+</script>
+</body>
+</html>
