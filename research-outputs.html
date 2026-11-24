@@ -8,9 +8,9 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="page wide">
+<div class="page">
 
-<header class="top">
+<header class="card top">
   <a class="home" href="index.html">Edward Azakov</a>
   <nav aria-label="Main">
     <a href="index.html#news">News</a>
@@ -20,17 +20,17 @@
   </nav>
 </header>
 
-<main>
+<main class="page" style="padding:0">
 
-<h1 style="margin-top:2.25rem">Research outputs</h1>
-<p>As of November 2026 I have reported 264 previously unknown bugs in 23 open-source RISC-V processors, and maintainers have confirmed 31 of them. Each one is a public GitHub or GitLab issue with a test case that reproduces it.</p>
+<section class="card">
+  <h1>Research outputs</h1>
+  <p class="lede">As of November 2026 I have reported 264 previously unknown bugs in 23 open-source RISC-V processors, and maintainers have confirmed 31 of them. Each one is a public GitHub or GitLab issue with a test case that reproduces it.</p>
+</section>
 
-<h2>Paper under review</h2>
-<p>LLM-guided formal verification for RISC-V security. <span class="venue">Under review, IEEE Symposium on Security and Privacy (S&amp;P) 2027.</span></p>
-
-<h2>Bugs by processor</h2>
-<p>The cores range from small embedded designs to Linux-capable, superscalar, and out-of-order processors. Processor names in the figure link to each project's repository.</p>
-<figure>
+<section class="card">
+  <h2>Bugs by processor</h2>
+  <p>The cores range from small embedded designs to Linux-capable, superscalar, and out-of-order processors. Processor names link to each project's repository.</p>
+  <figure>
 <svg xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="auto" role="img" aria-label="Bar chart of bugs reported per processor. Each processor name links to its repository." viewBox="0 0 619.2 259.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -811,41 +811,54 @@ z
   </clipPath>
  </defs>
 </svg>
+    <figcaption><b>Figure 1.</b> Bugs reported per processor.</figcaption>
+  </figure>
+</section>
 
-  <figcaption><b>Figure 1.</b> Bugs reported per processor. Braces group processors by class and give the total for each class.</figcaption>
-</figure>
+<div class="two">
+  <section class="card">
+    <h2>How the bugs were found</h2>
+    <p>An LLM-guided formal verification framework (101), RVSentry, my library of formal security checks (126), and an extended ACT4 architecture test suite (37).</p>
+    <figure>
+      <img src="bugs_by_method.svg" alt="Grouped bar chart of bugs found by the LLM-guided framework, RVSentry, and ACT4 for each processor class" width="442" height="317">
+      <figcaption><b>Figure 2.</b> Bugs by discovery method and processor class.</figcaption>
+    </figure>
+  </section>
 
-<h2>How the bugs were found</h2>
-<p>The reports come from three efforts: an LLM-guided formal verification framework (101 bugs), RVSentry, my library of formal security checks for RISC-V cores (126), and an extended version of the ACT4 architecture test suite (37).</p>
-<figure class="half">
-  <img src="bugs_by_method.svg" alt="Grouped bar chart of bugs found by the LLM-guided framework, RVSentry, and ACT4 for each processor class" width="595" height="298">
-  <figcaption><b>Figure 2.</b> Bugs by discovery method and processor class.</figcaption>
-</figure>
+  <section class="card">
+    <h2>Where the bugs are</h2>
+    <p>Most RVSentry and ACT4 findings sit in control and status registers, trap and interrupt handling, and memory protection.</p>
+    <figure>
+      <img src="bug_types.svg" alt="Bar chart of RVSentry and ACT4 bugs by processor area" width="442" height="317">
+      <figcaption><b>Figure 3.</b> RVSentry and ACT4 bugs by processor area (163 reports).</figcaption>
+    </figure>
+  </section>
+</div>
 
-<h2>Where the bugs are</h2>
-<p>Most RVSentry and ACT4 findings sit in control and status registers, trap and interrupt handling, and memory protection.</p>
-<figure class="half">
-  <img src="bug_types.svg" alt="Bar chart of RVSentry and ACT4 bugs by processor area" width="595" height="298">
-  <figcaption><b>Figure 3.</b> RVSentry and ACT4 bugs by the part of the processor that misbehaves (163 reports).</figcaption>
-</figure>
-
-<h2>Selected findings</h2>
-<ul class="findings">
-    <li><b>Ocelot.</b> Vector loads and stores skip physical memory protection (PMP) checks entirely. (<a href="https://github.com/tenstorrent/riscv-ocelot/issues/21">#21</a>)</li>
-    <li><b>CVA6.</b> A page-walk result lands in the wrong TLB, so an execute-only page becomes readable and a non-executable page becomes executable. (<a href="https://github.com/openhwfoundation/cva6/issues/3757">#3757</a>)</li>
-    <li><b>Sargantana.</b> The TLBs ignore the address-space ID, so one process can reuse another's translations after a context switch. Confirmed by the maintainers. (<a href="https://github.com/bsc-loca/sargantana/issues/153">#153</a>)</li>
-    <li><b>BOOM.</b> A page-table walk that overlaps a TLB flush is still installed, so loads keep using the old mapping. (<a href="https://github.com/riscv-boom/riscv-boom/issues/830">#830</a>)</li>
-    <li><b>OpenC910.</b> A walk started in the old address space is installed under the new one's ID after a context switch. (<a href="https://github.com/XUANTIE-RV/openc910/issues/86">#86</a>)</li>
-    <li><b>XiangShan.</b> When two data-TLB entries match, the core returns the bitwise OR of their physical pages and permissions. (<a href="https://github.com/OpenXiangShan/XiangShan/issues/6809">#6809</a>)</li>
-    <li><b>Shakti C-Class.</b> A NAPOT physical-memory-protection region does not cover its upper half. (<a href="https://gitlab.com/shaktiproject/cores/c-class/-/issues/329">#329</a>)</li>
-    <li><b>Flute.</b> Supervisor code can execute instructions from a user page. (<a href="https://github.com/bluespec/Flute/issues/48">#48</a>)</li>
-    <li><b>Flute.</b> A branch-predictor entry trained in user mode sends a machine-mode fetch into the UART range and hangs the core. (<a href="https://github.com/bluespec/Flute/issues/62">#62</a>)</li>
-    <li><b>Ocelot.</b> Vector divide and square root at 64-bit element width never complete and hang the hart. (<a href="https://github.com/tenstorrent/riscv-ocelot/issues/35">#35</a>)</li>
-</ul>
+<section class="card">
+  <h2>Most impressive finds</h2>
+  <div class="tablewrap">
+  <table class="finds">
+    <thead><tr><th scope="col">Core</th><th scope="col">Bug description</th><th scope="col">Link</th></tr></thead>
+    <tbody>
+      <tr><td>Ocelot</td><td>Vector loads and stores skip physical memory protection (PMP) checks entirely.</td><td><a href="https://github.com/tenstorrent/riscv-ocelot/issues/21">#21</a></td></tr>
+      <tr><td>CVA6</td><td>A page-walk result lands in the wrong TLB, so an execute-only page becomes readable and a non-executable page becomes executable.</td><td><a href="https://github.com/openhwfoundation/cva6/issues/3757">#3757</a></td></tr>
+      <tr><td>Sargantana</td><td>The TLBs ignore the address-space ID, so one process can reuse another's translations after a context switch. Confirmed by the maintainers.</td><td><a href="https://github.com/bsc-loca/sargantana/issues/153">#153</a></td></tr>
+      <tr><td>BOOM</td><td>A page-table walk that overlaps a TLB flush is still installed, so loads keep using the old mapping.</td><td><a href="https://github.com/riscv-boom/riscv-boom/issues/830">#830</a></td></tr>
+      <tr><td>OpenC910</td><td>A walk started in the old address space is installed under the new one's ID after a context switch.</td><td><a href="https://github.com/XUANTIE-RV/openc910/issues/86">#86</a></td></tr>
+      <tr><td>XiangShan</td><td>When two data-TLB entries match, the core returns the bitwise OR of their physical pages and permissions.</td><td><a href="https://github.com/OpenXiangShan/XiangShan/issues/6809">#6809</a></td></tr>
+      <tr><td>Shakti C-Class</td><td>A NAPOT physical-memory-protection region does not cover its upper half.</td><td><a href="https://gitlab.com/shaktiproject/cores/c-class/-/issues/329">#329</a></td></tr>
+      <tr><td>Flute</td><td>Supervisor code can execute instructions from a user page.</td><td><a href="https://github.com/bluespec/Flute/issues/48">#48</a></td></tr>
+      <tr><td>Flute</td><td>A branch-predictor entry trained in user mode sends a machine-mode fetch into the UART range and hangs the core.</td><td><a href="https://github.com/bluespec/Flute/issues/62">#62</a></td></tr>
+      <tr><td>Ocelot</td><td>Vector divide and square root at 64-bit element width never complete and hang the hart.</td><td><a href="https://github.com/tenstorrent/riscv-ocelot/issues/35">#35</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
 
 </main>
 
-<footer class="small">Last updated November 2026.</footer>
+<footer>Last updated November 2026</footer>
 
 </div>
 </body>

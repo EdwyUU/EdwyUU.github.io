@@ -1,78 +1,94 @@
-/* Edward Azakov: plain academic homepage. One column, serif text, maroon links. */
+/* Edward Azakov: academic homepage. Compact cards on a warm gray page, serif text, maroon accents. */
 :root {
   --ink: #1b1a19;
-  --soft: #5d5a55;
-  --rule: #dcd8d0;
-  --paper: #ffffff;
+  --soft: #5f5b55;
+  --rule: #e4e0d8;
+  --page: #f2f0ec;
+  --card: #ffffff;
   --link: #6b0f1a;
-  --measure: 40rem;
+  --radius: 10px;
 }
 
 * { box-sizing: border-box; }
-
 html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background: var(--paper);
+  background: var(--page);
   color: var(--ink);
   font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
-  font-size: 1.0625rem;
-  line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 a { color: var(--link); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
 a:hover { text-decoration-thickness: 2px; }
 a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
 
-.page { max-width: var(--measure); margin: 0 auto; padding: 2.5rem 1.25rem 3rem; }
-.page.wide { max-width: 52rem; }
+.page { max-width: 60rem; margin: 0 auto; padding: 1rem 1rem 1.5rem; display: grid; gap: .85rem; }
+
+.card { background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1rem 1.35rem 1.1rem; }
+.card > h2:first-child { margin-top: 0; }
 
 /* masthead */
-.top { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .25rem 1.25rem; padding-bottom: .6rem; border-bottom: 1px solid var(--rule); }
-.top .home { color: var(--ink); text-decoration: none; font-size: 1.05rem; }
+.top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .25rem 1.25rem; padding: .6rem 1.35rem; border-top: 3px solid var(--link); }
+.top .home { color: var(--ink); text-decoration: none; font-weight: 700; }
 .top nav { display: flex; gap: 1.1rem; flex-wrap: wrap; font-size: .95rem; }
 .top nav a { color: var(--soft); text-decoration: none; }
-.top nav a:hover, .top nav a[aria-current] { color: var(--ink); text-decoration: underline; }
+.top nav a:hover, .top nav a[aria-current] { color: var(--link); text-decoration: underline; }
 
-/* intro */
-.intro { display: grid; grid-template-columns: 9.5rem 1fr; gap: 1.75rem; align-items: center; margin: 2.25rem 0 .5rem; }
-.intro img { width: 9.5rem; height: 9.5rem; border-radius: 50%; object-fit: cover; object-position: center 35%; }
-h1 { font-size: 2rem; font-weight: 400; line-height: 1.15; margin: 0 0 .35rem; letter-spacing: -.005em; }
-.intro p { margin: 0; color: var(--soft); }
-.links { margin-top: .6rem !important; color: var(--ink) !important; }
-.links a + a::before { content: "\00b7"; color: var(--soft); display: inline-block; margin: 0 .5rem; text-decoration: none; }
+/* intro: photo beside name and bio */
+.intro { display: grid; grid-template-columns: 10rem 1fr; gap: 1.5rem; align-items: start; }
+.intro img { width: 10rem; height: 10rem; border-radius: 50%; object-fit: cover; object-position: center 35%; }
+h1 { font-size: 1.85rem; font-weight: 400; line-height: 1.15; margin: 0 0 .15rem; }
+.role { margin: 0 0 .35rem; color: var(--soft); }
+.links { margin: 0 0 .75rem; }
+.links a + a::before { content: "\00b7"; color: var(--soft); display: inline-block; margin: 0 .45rem; }
+.intro p:last-child { margin-bottom: 0; }
 
-h2 { font-size: 1.2rem; font-weight: 700; margin: 2.25rem 0 .6rem; }
-p { margin: 0 0 .9rem; }
+h2 { font-size: 1.15rem; font-weight: 700; margin: 0 0 .5rem; color: var(--link); }
+p { margin: 0 0 .6rem; }
 
-/* dated lists: news, education, service */
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: .85rem; }
+
+/* dated rows */
 .dated { list-style: none; margin: 0; padding: 0; }
-.dated li { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; padding: .25rem 0; }
-.dated time, .dated .when { color: var(--soft); font-variant-numeric: tabular-nums; }
+.dated li { display: grid; grid-template-columns: 6.5rem 1fr; gap: .75rem; padding: .35rem 0; border-top: 1px solid var(--rule); }
+.dated li:first-child { border-top: 0; padding-top: 0; }
+.dated .when { color: var(--soft); font-variant-numeric: tabular-nums; }
 
-.pubs { margin: 0; padding-left: 1.2rem; }
-.pubs li { margin-bottom: .6rem; }
-.venue { font-style: italic; }
+/* publications */
+.pub { padding: .1rem 0; }
+.pub .title { font-weight: 700; }
+.pub .venue { font-style: italic; color: var(--soft); }
+.note { color: var(--soft); font-size: .93rem; margin: .5rem 0 0; }
 
-.small { font-size: .9rem; color: var(--soft); }
-footer { margin-top: 3rem; padding-top: .8rem; border-top: 1px solid var(--rule); }
+footer { text-align: center; font-size: .88rem; color: var(--soft); padding: .25rem 0 0; }
 
 /* research outputs */
-figure { margin: 1.5rem 0 1.75rem; }
+.lede { margin: 0; }
+figure { margin: .4rem 0 0; }
 figure img, figure svg { display: block; width: 100%; height: auto; }
-figure.half { max-width: 38rem; margin-left: auto; margin-right: auto; }
-figcaption { font-size: .92rem; color: var(--soft); margin-top: .5rem; text-align: center; }
+figcaption { font-size: .9rem; color: var(--soft); margin-top: .4rem; text-align: center; }
 figcaption b { color: var(--ink); font-weight: 400; }
 figure svg a { text-decoration: none; }
 figure svg a text { fill: var(--link) !important; }
 figure svg a:hover text { text-decoration: underline; }
 
-.findings { margin: 0; padding-left: 1.2rem; }
-.findings li { margin-bottom: .55rem; }
+.tablewrap { overflow-x: auto; }
+.finds { width: 100%; border-collapse: collapse; font-size: .97rem; }
+.finds th { text-align: left; font-weight: 700; color: var(--soft); font-size: .88rem; padding: .3rem .75rem .45rem 0; border-bottom: 2px solid var(--rule); }
+.finds td { vertical-align: top; padding: .5rem .75rem .5rem 0; border-bottom: 1px solid var(--rule); }
+.finds tr:last-child td { border-bottom: 0; }
+.finds td:first-child { font-weight: 700; white-space: nowrap; }
+.finds td:last-child, .finds th:last-child { padding-right: 0; white-space: nowrap; text-align: right; }
 
+@media (max-width: 44rem) {
+  .two { grid-template-columns: 1fr; }
+}
 @media (max-width: 34rem) {
-  .intro { grid-template-columns: 1fr; gap: 1rem; }
+  .intro { grid-template-columns: 1fr; gap: .9rem; }
   .intro img { width: 7.5rem; height: 7.5rem; }
-  .dated li { grid-template-columns: 1fr; gap: 0; padding: .4rem 0; }
+  .dated li { grid-template-columns: 1fr; gap: 0; }
+  .card { padding: .9rem 1rem 1rem; }
 }
