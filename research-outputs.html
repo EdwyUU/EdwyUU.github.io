@@ -24,8 +24,8 @@
 
 <section class="card">
   <h1>Research outputs</h1>
-  <p class="lede" style="margin-bottom:.5rem">As of November 2026 I have reported 264 previously unknown bugs in 23 open-source RISC-V processors, and maintainers have confirmed 31 of them. Each one is a public GitHub or GitLab issue with a test case that reproduces it.</p>
-  <p class="note">Most of these issues were filed anonymously for research purposes, so they do not appear under my name on GitHub or GitLab. For the complete list of reports, please email me at <a href="mailto:edwardazakov07@tamu.edu">edwardazakov07@tamu.edu</a>.</p>
+  <p class="lede" style="margin-bottom:.5rem">As of November 2026 I have reported 264 previously unknown bugs in 23 open-source RISC-V processors, and maintainers have confirmed 31 of them. Each one is filed as a public GitHub or GitLab issue with a test case that reproduces it.</p>
+  <p class="note">For research purposes, most of these issues were filed from a separate account rather than my personal profile, so searching my username will not find them. For the complete list, please email me at <a href="mailto:edwardazakov07@tamu.edu">edwardazakov07@tamu.edu</a>.</p>
 </section>
 
 <section class="card">
@@ -844,7 +844,7 @@ z
     <tbody>
       <tr><td>Ocelot</td><td>Vector loads and stores skip physical memory protection (PMP) checks entirely.</td><td><a href="https://github.com/tenstorrent/riscv-ocelot/issues/21">#21</a></td></tr>
       <tr><td>CVA6</td><td>A page-walk result lands in the wrong TLB, so an execute-only page becomes readable and a non-executable page becomes executable.</td><td><a href="https://github.com/openhwfoundation/cva6/issues/3757">#3757</a></td></tr>
-      <tr><td>Sargantana</td><td>The TLBs ignore the address-space ID, so one process can reuse another's translations after a context switch. Confirmed by the maintainers.</td><td><a href="https://github.com/bsc-loca/sargantana/issues/153">#153</a></td></tr>
+      <tr><td>Sargantana</td><td>The TLBs ignore the address-space ID, so one process can reuse another's translations after a context switch.</td><td><a href="https://github.com/bsc-loca/sargantana/issues/153">#153</a></td></tr>
       <tr><td>BOOM</td><td>A page-table walk that overlaps a TLB flush is still installed, so loads keep using the old mapping.</td><td><a href="https://github.com/riscv-boom/riscv-boom/issues/830">#830</a></td></tr>
       <tr><td>OpenC910</td><td>A walk started in the old address space is installed under the new one's ID after a context switch.</td><td><a href="https://github.com/XUANTIE-RV/openc910/issues/86">#86</a></td></tr>
       <tr><td>XiangShan</td><td>When two data-TLB entries match, the core returns the bitwise OR of their physical pages and permissions.</td><td><a href="https://github.com/OpenXiangShan/XiangShan/issues/6809">#6809</a></td></tr>

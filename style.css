@@ -1,11 +1,11 @@
-/* Edward Azakov: academic homepage. Compact cards on a warm gray page, serif text, maroon accents. */
+/* Edward Azakov: academic homepage. Compact cards on an ivory page, serif text, maroon accents. */
 :root {
-  --ink: #1b1a19;
-  --soft: #5f5b55;
-  --rule: #e4e0d8;
-  --page: #f2f0ec;
+  --ink: #1f1a17;
+  --soft: #6a5f55;
+  --rule: #e7dfd0;
+  --page: #f5f1e8;
   --card: #ffffff;
-  --link: #6b0f1a;
+  --link: #500000;
   --radius: 10px;
 }
 
