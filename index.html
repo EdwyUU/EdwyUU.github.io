@@ -1,166 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Edward Azakov</title>
-<meta name="description" content="Edward Azakov, Ph.D. student in Computer Engineering at Texas A&amp;M University.">
-<style>
-  :root {
-    --bg: #ffffff;
-    --text: #1f2328;
-    --muted: #57606a;
-    --accent: #0b5cad;
-    --border: #d0d7de;
-    --card: #f6f8fa;
-  }
-  [data-theme="dark"] {
-    --bg: #0d1117;
-    --text: #e6edf3;
-    --muted: #9198a1;
-    --accent: #58a6ff;
-    --border: #30363d;
-    --card: #161b22;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-    color: var(--text);
-    background: var(--bg);
-  }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
-
-  nav {
-    border-bottom: 1px solid var(--border);
-    position: sticky; top: 0;
-    background: var(--bg);
-    z-index: 10;
-  }
-  nav .wrap {
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 12px; padding-top: 12px; padding-bottom: 12px;
-  }
-  nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 18px; flex-wrap: wrap; }
-  nav a { color: var(--text); font-weight: 500; }
-  nav a.active { color: var(--accent); }
-  button#theme {
-    background: var(--card); color: var(--text);
-    border: 1px solid var(--border); border-radius: 6px;
-    padding: 4px 10px; cursor: pointer; font-size: 0.85rem;
-  }
-
-  header.hero {
-    display: flex; gap: 28px; align-items: center;
-    padding: 48px 0 24px; flex-wrap: wrap;
-  }
-  header.hero img {
-    width: 150px; height: 150px; border-radius: 50%;
-    object-fit: cover; object-position: center 35%; border: 1px solid var(--border);
-  }
-  header.hero h1 { margin: 0 0 6px; font-size: 2.1rem; }
-  header.hero .title { color: var(--muted); margin: 0; }
-  header.hero .links { margin-top: 12px; display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.95rem; }
-
-  section { padding: 24px 0; border-top: 1px solid var(--border); }
-  section:first-of-type { border-top: none; }
-  section h2 { font-size: 1.35rem; margin: 0 0 12px; }
-  section p { margin: 0 0 12px; }
-
-  .pub { margin-bottom: 16px; }
-  .pub .ptitle { font-weight: 600; }
-  .pub .pmeta { color: var(--muted); font-size: 0.92rem; }
-
-  footer {
-    border-top: 1px solid var(--border);
-    color: var(--muted); font-size: 0.9rem;
-    padding: 24px 0 40px; text-align: center;
-  }
-</style>
+<meta name="description" content="Edward Azakov, Ph.D. student in Computer Engineering at Texas A&amp;M University, working on pre-silicon security verification for RISC-V processors.">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="page">
 
-<nav>
-  <div class="wrap">
-    <strong>Edward Azakov</strong>
-    <ul>
-      <li><a href="#about" class="active">About</a></li>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#publications">Publications</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <button id="theme" type="button" aria-label="Toggle color theme">Dark mode</button>
+<header class="top">
+  <a class="home" href="index.html">Edward Azakov</a>
+  <nav aria-label="Main">
+    <a href="#news">News</a>
+    <a href="#publications">Publications</a>
+    <a href="research-outputs.html">Research Outputs</a>
+    <a href="Azakov_Edward_CV.pdf">CV</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="intro">
+  <img src="photo.jpg" alt="Edward Azakov" width="190" height="190">
+  <div>
+    <h1>Edward Azakov</h1>
+    <p>Ph.D. student, Computer Engineering<br>Texas A&amp;M University</p>
+    <p class="links">
+      <a href="mailto:edwardazakov07@tamu.edu">Email</a><a href="Azakov_Edward_CV.pdf">CV</a><a href="https://github.com/EdwyUU">GitHub</a><a href="https://www.linkedin.com/in/edward-azakov-0b47a3338/">LinkedIn</a>
+    </p>
   </div>
-</nav>
+</section>
 
-<main class="wrap">
+<section id="about">
+  <h2>About</h2>
+  <p>I am a first-year Ph.D. student in the SETH Lab at Texas A&amp;M, advised by Prof. Jeyavijayan (JV) Rajendran. I am a SCALE Graduate Fellow (U.S. Navy / Department of War) and a member of the Center for Secure Microelectronics Ecosystem (CSME).</p>
+  <p>I work on pre-silicon security verification for RISC-V processors: finding bugs in processor RTL before it becomes silicon. My current work combines LLM-guided analysis with formal model checking, and I have reported <a href="research-outputs.html">264 previously unknown bugs</a> in 23 open-source RISC-V cores, including CVA6, XiangShan, OpenC910, VeeR-EL2, and Tenstorrent's Ocelot.</p>
+</section>
 
-  <header class="hero">
-    <img src="photo.jpg" alt="Photo of Edward Azakov" onerror="this.style.display='none'">
-    <div>
-      <h1>Edward Azakov</h1>
-      <p class="title">Ph.D. Student, Computer Engineering</p>
-      <p class="title">Texas A&amp;M University</p>
-      <div class="links">
-        <a href="mailto:edwardazakov07@tamu.edu">Email</a>
-        <a href="Azakov_Edward_CV.pdf" target="_blank" rel="noopener">CV</a>
-        <a href="#">Google Scholar</a>
-        <a href="https://github.com/EdwyUU" target="_blank" rel="noopener">GitHub</a>
-      </div>
-    </div>
-  </header>
+<section id="news">
+  <h2>News</h2>
+  <ul class="dated">
+    <li><time datetime="2026-11">Nov 2026</time><span>Submitted our paper on LLM-guided formal verification for RISC-V to IEEE S&amp;P 2027.</span></li>
+    <li><time datetime="2026-08">Fall 2026</time><span>Teaching assistant for ECEN 426: Security of Embedded Systems.</span></li>
+    <li><time datetime="2026-08">Aug 2026</time><span>Started my Ph.D. at Texas A&amp;M as a SCALE Graduate Fellow.</span></li>
+    <li><time datetime="2026">2026</time><span>Organizer, judge, and bug author for Hack@DAC at the Design Automation Conference.</span></li>
+  </ul>
+</section>
 
-  <section id="about">
-    <h2>About</h2>
-    <p>I am a Ph.D. student in Computer Engineering at Texas A&amp;M University, working in the SETH Lab under Prof. Jeyavijayan (JV) Rajendran. I am affiliated with the Center for Secure Microelectronic Ecosystem (CSME).</p>
-    <p>My long-term goal is to become a professor, leading research in hardware security and computer architecture.</p>
-  </section>
+<section id="publications">
+  <h2>Publications</h2>
+  <ol class="pubs">
+    <li>LLM-guided formal verification for RISC-V security. <span class="venue">Under review, IEEE Symposium on Security and Privacy (S&amp;P) 2027.</span></li>
+  </ol>
+  <p>Bug reports filed upstream are listed on the <a href="research-outputs.html">research outputs</a> page.</p>
+</section>
 
-  <section id="research">
-    <h2>Research</h2>
-    <p>My research focuses on LLM-driven hardware security verification for RISC-V processors. I am building an agentic framework that pairs LLM-generated security hypotheses with formal model checking to expose vulnerabilities before silicon is fabricated.</p>
-  </section>
+<section id="education">
+  <h2>Education</h2>
+  <ul class="dated">
+    <li><span class="when">2026 to now</span><span>Ph.D., Computer Engineering, Texas A&amp;M University</span></li>
+    <li><span class="when">2022 to 2026</span><span>B.S., Electrical Engineering, Texas A&amp;M University</span></li>
+  </ul>
+</section>
 
-  <section id="publications">
-    <h2>Publications</h2>
-    <div class="pub">
-      <div class="ptitle">Paper title goes here</div>
-      <div class="pmeta">Author list, Venue, Year</div>
-    </div>
-  </section>
+<section id="service">
+  <h2>Teaching and service</h2>
+  <ul class="dated">
+    <li><span class="when">Fall 2026</span><span>Teaching assistant, ECEN 426: Security of Embedded Systems</span></li>
+    <li><span class="when">2026 to now</span><span>Organizer, judge, and bug author, Hack@DAC</span></li>
+    <li><span class="when">2026 to now</span><span>Graduate mentor and committee member, Junior Research Scholars</span></li>
+  </ul>
+</section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:edwardazakov07@tamu.edu">edwardazakov07@tamu.edu</a></p>
-    <p>Department of Electrical and Computer Engineering, Texas A&amp;M University, College Station, TX</p>
-  </section>
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Department of Electrical and Computer Engineering<br>Texas A&amp;M University, College Station, TX<br><a href="mailto:edwardazakov07@tamu.edu">edwardazakov07@tamu.edu</a></p>
+</section>
 
 </main>
 
-<footer>
-  <div class="wrap">&copy; 2026 Edward Azakov</div>
-</footer>
+<footer class="small">Last updated November 2026.</footer>
 
-<script>
-  (function () {
-    var root = document.documentElement;
-    var btn = document.getElementById('theme');
-    function apply(theme) {
-      root.setAttribute('data-theme', theme);
-      btn.textContent = theme === 'dark' ? 'Light mode' : 'Dark mode';
-    }
-    var saved = null;
-    try { saved = localStorage.getItem('theme'); } catch (e) {}
-    apply(saved === 'dark' ? 'dark' : 'light');
-    btn.addEventListener('click', function () {
-      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      apply(next);
-      try { localStorage.setItem('theme', next); } catch (e) {}
-    });
-  })();
-</script>
+</div>
 </body>
 </html>

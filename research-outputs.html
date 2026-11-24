@@ -1,146 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Research Outputs | Edward Azakov</title>
-<meta name="description" content="Edward Azakov, Ph.D. student in Computer Engineering at Texas A&amp;M University.">
-<style>
-  :root {
-    --bg: #ffffff;
-    --text: #1f2328;
-    --muted: #57606a;
-    --accent: #0b5cad;
-    --border: #d0d7de;
-    --card: #f6f8fa;
-  }
-  [data-theme="dark"] {
-    --bg: #0d1117;
-    --text: #e6edf3;
-    --muted: #9198a1;
-    --accent: #58a6ff;
-    --border: #30363d;
-    --card: #161b22;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-    color: var(--text);
-    background: var(--bg);
-  }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
-
-  nav {
-    border-bottom: 1px solid var(--border);
-    position: sticky; top: 0;
-    background: var(--bg);
-    z-index: 10;
-  }
-  nav .wrap {
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 12px; padding-top: 12px; padding-bottom: 12px;
-  }
-  nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 18px; flex-wrap: wrap; }
-  nav a { color: var(--text); font-weight: 500; }
-  nav a.active { color: var(--accent); }
-  button#theme {
-    background: var(--card); color: var(--text);
-    border: 1px solid var(--border); border-radius: 6px;
-    padding: 4px 10px; cursor: pointer; font-size: 0.85rem;
-  }
-
-  header.hero {
-    display: flex; gap: 28px; align-items: center;
-    padding: 48px 0 24px; flex-wrap: wrap;
-  }
-  header.hero img {
-    width: 150px; height: 150px; border-radius: 50%;
-    object-fit: cover; object-position: center 35%; border: 1px solid var(--border);
-  }
-  header.hero h1 { margin: 0 0 6px; font-size: 2.1rem; }
-  header.hero .title { color: var(--muted); margin: 0; }
-  header.hero .links { margin-top: 12px; display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.95rem; }
-
-  section { padding: 24px 0; border-top: 1px solid var(--border); }
-  section:first-of-type { border-top: none; }
-  section h2 { font-size: 1.35rem; margin: 0 0 12px; }
-  section p { margin: 0 0 12px; }
-
-  .pub { margin-bottom: 16px; }
-  .pub .ptitle { font-weight: 600; }
-  .pub .pmeta { color: var(--muted); font-size: 0.92rem; }
-
-  footer {
-    border-top: 1px solid var(--border);
-    color: var(--muted); font-size: 0.9rem;
-    padding: 24px 0 40px; text-align: center;
-  }
-
-  .wide { max-width: 900px; }
-  h1.page { font-size: 1.9rem; margin: 40px 0 6px; }
-  .lead { color: var(--muted); margin: 0 0 8px; }
-  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0 8px; }
-  .stat { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
-  .stat b { display: block; font-size: 2rem; line-height: 1.1; }
-  .stat span { color: var(--muted); font-size: 0.9rem; }
-  figure.chart { margin: 18px auto 8px; }
-  figure.chart.small { max-width: 640px; }
-  figure.chart .frame { background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 10px; }
-  figure.chart img, figure.chart svg { display: block; width: 100%; height: auto; }
-  figure.chart svg a text { fill: #0b5cad !important; cursor: pointer; }
-  figure.chart svg a:hover text { text-decoration: underline; }
-  figure.chart figcaption { text-align: center; color: var(--muted); font-size: 0.9rem; margin-top: 8px; }
-  figure.chart figcaption b { color: var(--text); font-weight: 600; }
-  .findings { list-style: none; margin: 0; padding: 0; }
-  .findings li { display: grid; grid-template-columns: 130px 1fr; gap: 4px 16px; padding: 12px 0; border-top: 1px solid var(--border); }
-  .findings .tag { display: block; font-size: 0.72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
-  .findings .core { font-weight: 600; }
-  .findings .st { color: var(--muted); font-size: 0.85rem; }
-  @media (max-width: 560px) { .stats { grid-template-columns: 1fr; } .findings li { grid-template-columns: 1fr; } }
-
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research outputs | Edward Azakov</title>
+<meta name="description" content="Previously unknown bugs Edward Azakov has found and reported in open-source RISC-V processors.">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="page wide">
 
-<nav>
-  <div class="wrap wide">
-    <strong>Edward Azakov</strong>
-    <ul>
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#research">Research</a></li>
-      <li><a href="index.html#publications">Publications</a></li>
-      <li><a href="research-outputs.html" class="active">Research Outputs</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
-    </ul>
-    <button id="theme" type="button" aria-label="Toggle color theme">Dark mode</button>
-  </div>
-</nav>
+<header class="top">
+  <a class="home" href="index.html">Edward Azakov</a>
+  <nav aria-label="Main">
+    <a href="index.html#news">News</a>
+    <a href="index.html#publications">Publications</a>
+    <a href="research-outputs.html" aria-current="page">Research Outputs</a>
+    <a href="Azakov_Edward_CV.pdf">CV</a>
+  </nav>
+</header>
 
-<main class="wrap wide">
+<main>
 
-  <h1 class="page">Research Outputs</h1>
-  <p class="lead">Previously unknown bugs I have found in open-source RISC-V processors and reported upstream. Every count is a public GitHub or GitLab issue with a reproducible test case. Counts as of November 2026.</p>
+<h1 style="margin-top:2.25rem">Research outputs</h1>
+<p>As of November 2026 I have reported 264 previously unknown bugs in 23 open-source RISC-V processors, and maintainers have confirmed 31 of them. Each one is a public GitHub or GitLab issue with a test case that reproduces it.</p>
 
-  <div class="stats">
-    <div class="stat"><b>264</b><span>bug reports filed</span></div>
-    <div class="stat"><b>23</b><span>processor cores</span></div>
-    <div class="stat"><b>31</b><span>confirmed by maintainers</span></div>
-  </div>
+<h2>Paper under review</h2>
+<p>LLM-guided formal verification for RISC-V security. <span class="venue">Under review, IEEE Symposium on Security and Privacy (S&amp;P) 2027.</span></p>
 
-  <section id="paper">
-    <h2>Paper under review</h2>
-    <p>LLM-guided formal verification for RISC-V security, submitted to the IEEE Symposium on Security and Privacy (S&amp;P) 2027.</p>
-  </section>
-
-  <section id="cores">
-    <h2>Bugs by processor</h2>
-    <p>The cores range from embedded microcontrollers to Linux-capable, superscalar, and out-of-order designs, including Tenstorrent's Ocelot, XiangShan, CVA6, OpenC910, and VeeR-EL2.</p>
-    <figure class="chart">
-      <div class="frame"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="auto" role="img" aria-label="Bar chart of bugs reported per processor; click a processor name to open its repository" viewBox="0 0 619.2 259.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<h2>Bugs by processor</h2>
+<p>The cores range from small embedded designs to Linux-capable, superscalar, and out-of-order processors. Processor names in the figure link to each project's repository.</p>
+<figure>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="auto" role="img" aria-label="Bar chart of bugs reported per processor. Each processor name links to its repository." viewBox="0 0 619.2 259.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
@@ -920,77 +811,42 @@ z
   </clipPath>
  </defs>
 </svg>
-</div>
-      <figcaption><b>Figure 1.</b> Bugs reported per processor. Braces group processors by class and show the total for each class. Click a processor name to open its repository.</figcaption>
-    </figure>
-  </section>
 
-  <section id="methods">
-    <h2>How the bugs were found</h2>
-    <p>The bugs come from three efforts: an LLM-guided formal verification framework (101 bugs), RVSentry, a reusable library of formal security checks for RISC-V cores (126), and an extended version of the ACT4 architecture test suite (37).</p>
-    <figure class="chart small">
-      <div class="frame"><img src="figures/bugs_by_method.svg" alt="Grouped bar chart of bugs found by the LLM-guided framework, RVSentry, and ACT4 for each processor class" loading="lazy"></div>
-      <figcaption><b>Figure 2.</b> Bugs by discovery method and processor class.</figcaption>
-    </figure>
-  </section>
+  <figcaption><b>Figure 1.</b> Bugs reported per processor. Braces group processors by class and give the total for each class.</figcaption>
+</figure>
 
-  <section id="types">
-    <h2>What kind of bugs</h2>
-    <p>Most of the RVSentry and ACT4 findings are in control and status registers, trap and interrupt handling, and memory protection, the logic that keeps privilege levels and processes apart.</p>
-    <figure class="chart small">
-      <div class="frame"><img src="figures/bug_types.svg" alt="Bar chart of bug counts by type" loading="lazy"></div>
-      <figcaption><b>Figure 3.</b> RVSentry and ACT4 bugs by the part of the processor that misbehaves (163 reports).</figcaption>
-    </figure>
-  </section>
-  <section id="findings">
-    <h2>Selected findings with security impact</h2>
-    <ul class="findings">
-      <li><div><span class="tag">Memory isolation</span><span class="core">Ocelot</span></div>
-        <div>Vector loads and stores skip physical memory protection (PMP) checks entirely. <a href="https://github.com/tenstorrent/riscv-ocelot/issues/21" target="_blank" rel="noopener">Issue #21</a> <span class="st">&middot; Awaiting response</span></div></li>
-      <li><div><span class="tag">Memory isolation</span><span class="core">CVA6</span></div>
-        <div>A page-walk result lands in the wrong TLB, so an execute-only page becomes readable and a non-executable page becomes executable. <a href="https://github.com/openhwfoundation/cva6/issues/3757" target="_blank" rel="noopener">Issue #3757</a> <span class="st">&middot; Awaiting response</span></div></li>
-      <li><div><span class="tag">Memory isolation</span><span class="core">Sargantana</span></div>
-        <div>The TLBs ignore the address-space ID, so one process can reuse another's translations after a context switch. <a href="https://github.com/bsc-loca/sargantana/issues/153" target="_blank" rel="noopener">Issue #153</a> <span class="st">&middot; Confirmed by maintainers</span></div></li>
-      <li><div><span class="tag">Memory isolation</span><span class="core">BOOM</span></div>
-        <div>A page-table walk that overlaps a TLB flush is still installed, so loads keep using the old mapping. <a href="https://github.com/riscv-boom/riscv-boom/issues/830" target="_blank" rel="noopener">Issue #830</a> <span class="st">&middot; Awaiting response</span></div></li>
-      <li><div><span class="tag">Memory isolation</span><span class="core">OpenC910</span></div>
-        <div>A walk started in the old address space is installed under the new one's ID after a context switch. <a href="https://github.com/XUANTIE-RV/openc910/issues/86" target="_blank" rel="noopener">Issue #86</a> <span class="st">&middot; Awaiting response</span></div></li>
-      <li><div><span class="tag">Memory isolation</span><span class="core">XiangShan</span></div>
-        <div>When two data-TLB entries match, the core returns the bitwise OR of their physical pages and permissions. <a href="https://github.com/OpenXiangShan/XiangShan/issues/6809" target="_blank" rel="noopener">Issue #6809</a> <span class="st">&middot; In discussion with maintainers</span></div></li>
-      <li><div><span class="tag">Memory isolation</span><span class="core">Shakti C-Class</span></div>
-        <div>A NAPOT physical-memory-protection region does not cover its upper half. <a href="https://gitlab.com/shaktiproject/cores/c-class/-/issues/329" target="_blank" rel="noopener">Issue #329</a> <span class="st">&middot; Awaiting response</span></div></li>
-      <li><div><span class="tag">Privilege</span><span class="core">Flute</span></div>
-        <div>Supervisor code can execute instructions from a user page. <a href="https://github.com/bluespec/Flute/issues/48" target="_blank" rel="noopener">Issue #48</a> <span class="st">&middot; Awaiting response</span></div></li>
-      <li><div><span class="tag">Hang</span><span class="core">Flute</span></div>
-        <div>A branch-predictor entry trained in user mode sends a machine-mode fetch into the UART range and hangs the core. <a href="https://github.com/bluespec/Flute/issues/62" target="_blank" rel="noopener">Issue #62</a> <span class="st">&middot; Awaiting response</span></div></li>
-      <li><div><span class="tag">Hang</span><span class="core">Ocelot</span></div>
-        <div>Vector divide and square root at 64-bit element width never complete and hang the hart. <a href="https://github.com/tenstorrent/riscv-ocelot/issues/35" target="_blank" rel="noopener">Issue #35</a> <span class="st">&middot; Awaiting response</span></div></li>
-    </ul>
-  </section>
+<h2>How the bugs were found</h2>
+<p>The reports come from three efforts: an LLM-guided formal verification framework (101 bugs), RVSentry, my library of formal security checks for RISC-V cores (126), and an extended version of the ACT4 architecture test suite (37).</p>
+<figure class="half">
+  <img src="bugs_by_method.svg" alt="Grouped bar chart of bugs found by the LLM-guided framework, RVSentry, and ACT4 for each processor class" width="595" height="298">
+  <figcaption><b>Figure 2.</b> Bugs by discovery method and processor class.</figcaption>
+</figure>
+
+<h2>Where the bugs are</h2>
+<p>Most RVSentry and ACT4 findings sit in control and status registers, trap and interrupt handling, and memory protection.</p>
+<figure class="half">
+  <img src="bug_types.svg" alt="Bar chart of RVSentry and ACT4 bugs by processor area" width="595" height="298">
+  <figcaption><b>Figure 3.</b> RVSentry and ACT4 bugs by the part of the processor that misbehaves (163 reports).</figcaption>
+</figure>
+
+<h2>Selected findings</h2>
+<ul class="findings">
+    <li><b>Ocelot.</b> Vector loads and stores skip physical memory protection (PMP) checks entirely. (<a href="https://github.com/tenstorrent/riscv-ocelot/issues/21">#21</a>)</li>
+    <li><b>CVA6.</b> A page-walk result lands in the wrong TLB, so an execute-only page becomes readable and a non-executable page becomes executable. (<a href="https://github.com/openhwfoundation/cva6/issues/3757">#3757</a>)</li>
+    <li><b>Sargantana.</b> The TLBs ignore the address-space ID, so one process can reuse another's translations after a context switch. Confirmed by the maintainers. (<a href="https://github.com/bsc-loca/sargantana/issues/153">#153</a>)</li>
+    <li><b>BOOM.</b> A page-table walk that overlaps a TLB flush is still installed, so loads keep using the old mapping. (<a href="https://github.com/riscv-boom/riscv-boom/issues/830">#830</a>)</li>
+    <li><b>OpenC910.</b> A walk started in the old address space is installed under the new one's ID after a context switch. (<a href="https://github.com/XUANTIE-RV/openc910/issues/86">#86</a>)</li>
+    <li><b>XiangShan.</b> When two data-TLB entries match, the core returns the bitwise OR of their physical pages and permissions. (<a href="https://github.com/OpenXiangShan/XiangShan/issues/6809">#6809</a>)</li>
+    <li><b>Shakti C-Class.</b> A NAPOT physical-memory-protection region does not cover its upper half. (<a href="https://gitlab.com/shaktiproject/cores/c-class/-/issues/329">#329</a>)</li>
+    <li><b>Flute.</b> Supervisor code can execute instructions from a user page. (<a href="https://github.com/bluespec/Flute/issues/48">#48</a>)</li>
+    <li><b>Flute.</b> A branch-predictor entry trained in user mode sends a machine-mode fetch into the UART range and hangs the core. (<a href="https://github.com/bluespec/Flute/issues/62">#62</a>)</li>
+    <li><b>Ocelot.</b> Vector divide and square root at 64-bit element width never complete and hang the hart. (<a href="https://github.com/tenstorrent/riscv-ocelot/issues/35">#35</a>)</li>
+</ul>
 
 </main>
 
-<footer>
-  <div class="wrap">&copy; 2026 Edward Azakov</div>
-</footer>
+<footer class="small">Last updated November 2026.</footer>
 
-<script>
-  (function () {
-    var root = document.documentElement;
-    var btn = document.getElementById('theme');
-    function apply(theme) {
-      root.setAttribute('data-theme', theme);
-      btn.textContent = theme === 'dark' ? 'Light mode' : 'Dark mode';
-    }
-    var saved = null;
-    try { saved = localStorage.getItem('theme'); } catch (e) {}
-    apply(saved === 'dark' ? 'dark' : 'light');
-    btn.addEventListener('click', function () {
-      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      apply(next);
-      try { localStorage.setItem('theme', next); } catch (e) {}
-    });
-  })();
-</script>
+</div>
 </body>
 </html>
