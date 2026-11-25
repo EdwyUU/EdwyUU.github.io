@@ -10,7 +10,7 @@
 <style>
 /* News timeline: newest at the top. A fixed line drawing sits behind the page and
    cross-fades as each era of the timeline reaches the middle of the screen. */
-:root { --base: #2b0203; --ink: #f7ece7; --soft: #e2bcb6; --neon: #ff7a78; --line: rgba(255,122,120,.55); }
+:root { --base: #2b0203; --ink: #f2e6e1; --soft: #d6b3ad; --neon: #d9726f; --line: rgba(217,114,111,.4); }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--base); color: var(--ink);
@@ -22,6 +22,8 @@ a:focus-visible { outline: 2px solid var(--neon); outline-offset: 3px; }
 .bg { z-index: 0; }
 .bg div { background-size: cover; background-repeat: no-repeat; opacity: 0; transition: opacity .8s ease; will-change: opacity; }
 .bg div.on { opacity: 1; }
+/* dim the neon drawings so they sit back behind the text */
+.bg div { filter: brightness(.72) saturate(.85); }
 .bg .zachry { background-image: url(news-zachry.svg); background-position: 60% 45%; }
 .bg .japan { background-image: url(news-japan.svg); background-position: 50% 56%; }
 /* each drawing carries its own shade over the left side, where the text sits, tinted to match it */
@@ -43,30 +45,30 @@ main { max-width: 72rem; margin: 0 auto; padding: 0 1.25rem; }
 h1 { font-size: 2.4rem; font-weight: 400; line-height: 1.1; margin: 1.5rem 0 .4rem; }
 .intro { color: var(--soft); margin: 0 0 .5rem; }
 .key { font-size: .9rem; color: var(--soft); display: flex; align-items: center; gap: .45rem; margin: 0; }
-.key i { width: .62rem; height: .62rem; border-radius: 50%; background: var(--neon); box-shadow: 0 0 8px var(--neon); display: inline-block; }
+.key i { width: .62rem; height: .62rem; border-radius: 50%; background: var(--neon); box-shadow: 0 0 4px rgba(217,114,111,.45); display: inline-block; }
 
 /* the rail */
 .tl { position: relative; padding-left: 1.9rem; }
-.tl::before { content: ""; position: absolute; left: .5rem; top: 2rem; bottom: 3rem; width: 2px; background: var(--line); box-shadow: 0 0 10px rgba(255,90,90,.6); }
+.tl::before { content: ""; position: absolute; left: .5rem; top: 2rem; bottom: 3rem; width: 2px; background: var(--line); box-shadow: 0 0 5px rgba(217,114,111,.3); }
 .era { min-height: 88vh; display: flex; flex-direction: column; justify-content: center; padding: 2rem 0; }
 .era:first-child { min-height: 78vh; justify-content: flex-start; padding-top: 1.5rem; }
 .era.tall { min-height: 115vh; }
 .era ol { list-style: none; margin: 0; padding: 0; }
-.year { margin: 1.6rem 0 .5rem -1.9rem; }
+.year { margin: 1.6rem 0 .5rem; }
 .year:first-child { margin-top: 0; }
 .year span { display: inline-block; font-weight: 700; font-size: .9rem; line-height: 1; padding: .34rem .7rem; border-radius: 999px;
-  color: var(--ink); background: var(--base); border: 1.5px solid var(--neon); box-shadow: 0 0 10px rgba(255,90,90,.55); font-variant-numeric: tabular-nums; }
+  color: var(--ink); background: var(--base); border: 1.5px solid var(--neon); box-shadow: 0 0 5px rgba(217,114,111,.3); font-variant-numeric: tabular-nums; }
 .ev { position: relative; display: grid; grid-template-columns: 4.7rem 1fr; gap: .7rem; padding: .7rem 0; }
 .ev::before { content: ""; position: absolute; left: -1.74rem; top: 1.12rem; width: .7rem; height: .7rem; border-radius: 50%;
   background: var(--base); border: 2px solid var(--neon); box-sizing: border-box; }
-.ev.award::before { background: var(--neon); box-shadow: 0 0 9px var(--neon); }
+.ev.award::before { background: var(--neon); box-shadow: 0 0 4px rgba(217,114,111,.45); }
 .when { color: var(--soft); font-variant-numeric: tabular-nums; }
 .what { text-shadow: 0 1px 6px rgba(20,0,0,.9); }
 .ev.big .what { font-size: 1.3rem; line-height: 1.35; }
 /* the Japan stretch of the timeline picks up the purple of its drawing */
-.era[data-bg="japan"] { position: relative; --neon: #b48cf0; }
+.era[data-bg="japan"] { position: relative; --neon: #a283d6; }
 .era[data-bg="japan"]::before { content: ""; position: absolute; left: -1.4rem; top: 0; bottom: 0; width: 2px;
-  background: linear-gradient(#ff7a78, #b48cf0 18%, #b48cf0 82%, #ff7a78); box-shadow: 0 0 10px rgba(150,90,255,.7); }
+  background: linear-gradient(rgba(217,114,111,.4), #a283d6 18%, #a283d6 82%, rgba(217,114,111,.4)); box-shadow: 0 0 5px rgba(150,110,220,.35); }
 .era[data-bg="japan"] .ev::before { background: #25083a; }
 .era[data-bg="japan"] .when { color: #d9c8f5; }
 .ev.big .when { padding-top: .25rem; }
